@@ -21,18 +21,18 @@ const Navbar = () => {
 
 
 
-        <li><Link href="/" className="text-black">Home</Link></li>
-        <li><Link href="/about" className="text-black">About</Link></li>
-        <li><Link href="/contact" className="text-black">Contact</Link></li>
-        <li><Link href="/login" className="text-black">categorires</Link></li>
-        <li><Link href="/login" className="text-black">categorires</Link></li>
+        <li><Link href="/" className="text-black opacity-50">HOME</Link></li>
+        <li><Link href="/about" className="text-black opacity-50">ABOUT</Link></li>
+        <li><Link href="/contact" className="text-black opacity-50">categorires</Link></li>
+        <li><Link href="/login" className="text-black opacity-50">OFFERS</Link></li>
+        <li><Link href="/login" className="text-black opacity-50">CONTACT</Link></li>
       </ul>
 
       <div className='flex justify-between w-[110px]'>
-      <Link href="#" className=''>Login
+      <Link href="#" className=''>LOGIN
       </Link>
       <div className='w-[3px] h-8 bg-black'></div>
-      <Link href="#">sign up</Link>
+      <Link href="#">SIGN UP</Link>
 </div>
    
     </nav>

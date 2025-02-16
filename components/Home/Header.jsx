@@ -4,7 +4,8 @@ import Slider from '@/components/Slider/slider'
 const Header=()=> {
   return (
   <>
-  
+
+
   <Slider/>
   </>
   )
