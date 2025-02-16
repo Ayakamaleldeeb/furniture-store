@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className="font-sans bg-gray-100">
         <Navbar />
         {/* <ClientProvider> */}
-          <main className="container mx-auto p-4">
+          <main className="">
             {children}
           </main>
         {/* </ClientProvider> */}

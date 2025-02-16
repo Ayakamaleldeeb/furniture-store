@@ -1,11 +1,11 @@
 
 import React from 'react'
-// import Slider from '@/components/Slider/slider'
+import Slider from '@/components/Slider/slider'
 const Header=()=> {
   return (
   <>
   
-  {/* <Slider/> */}
+  <Slider/>
   </>
   )
 }
