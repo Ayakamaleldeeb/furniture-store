@@ -1,3 +1,142 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  @keyframes glitch {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  @keyframes glitchTop {
+    0% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    10% {
+      clip: rect(0, 900px, 10px, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    20% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    30% {
+      clip: rect(0, 900px, 10px, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    40% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    50% {
+      clip: rect(0, 900px, 10px, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    60% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    70% {
+      clip: rect(0, 900px, 10px, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    80% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    90% {
+      clip: rect(0, 900px, 10px, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    100% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+  }
+
+  @keyframes glitchBottom {
+    0% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    10% {
+      clip: rect(0, 900px, 10px, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    20% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    30% {
+      clip: rect(0, 900px, 10px, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    40% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    50% {
+      clip: rect(0, 900px, 10px, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    60% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    70% {
+      clip: rect(0, 900px, 10px, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    80% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    90% {
+      clip: rect(0, 900px, 10px, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+    100% {
+      clip: rect(0, 900px, 0, 0);
+      transform: skew(0.3deg, 0.3deg);
+    }
+  }
+
+  .glitch {
+    @apply relative text-white text-5xl uppercase;
+    animation: glitch 1s infinite;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    @apply absolute left-0 w-full h-full bg-black overflow-hidden;
+    clip: rect(0, 900px, 0, 0);
+  }
+
+  .glitch::before {
+    @apply left-0 text-red-500;
+    animation: glitchTop 1.5s infinite linear alternate-reverse;
+  }
+
+  .glitch::after {
+    @apply left-0 text-blue-500;
+    animation: glitchBottom 1.5s infinite linear alternate-reverse;
+  }
+}
