@@ -166,7 +166,7 @@ export default function Slider() {
                 <img
                   src={slide.image}
                   alt={`Slide ${slide.id}`}
-                  className="w-full h-full object-cover"
+                  className="w-60 h-full object-cover"
                 />
                 {activeCard === index && (
                   <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-500">

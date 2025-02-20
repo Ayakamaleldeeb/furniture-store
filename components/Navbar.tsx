@@ -81,13 +81,17 @@ const Navbar = () => {
           </svg>
         </button>
       </div>
+<div className={`flex justify-between w-full ${isOpen ? 'block' : 'hidden'}`}>
 
-      <ul className={`flex space-x-16 md:flex ${isOpen ? 'block' : 'hidden'} md:block`}>
+
+      <ul className="flex space-x-16 md:flex ">
         <li><Link href="/" className="text-black opacity-50">HOME</Link></li>
         <li><Link href="/about" className="text-black opacity-50">ABOUT</Link></li>
         <li><Link href="/contact" className="text-black opacity-50">CATEGORIES</Link></li>
         <li><Link href="/login" className="text-black opacity-50">OFFERS</Link></li>
         <li><Link href="/login" className="text-black opacity-50">CONTACT</Link></li>
+
+
       </ul>
 
       <div className="flex justify-between w-[110px]">
@@ -95,6 +99,8 @@ const Navbar = () => {
         <div className='w-[3px] h-8 bg-black'></div>
         <Link href="#" className='text-black'>SIGN UP</Link>
       </div>
+      </div>
+
     </nav>
   );
 };
