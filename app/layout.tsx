@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
 import Navbar from "../components/Navbar";
-// import ClientProvider from "../components/ClientProvider";
+import ClientProvider from "../components/ClientProvider";
 import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
@@ -19,11 +19,11 @@ export default function RootLayout({
       
       <body className="font-sans bg-gray-100">
         <Navbar />
-        {/* <ClientProvider> */}
+        <ClientProvider>
           <main className="">
             {children}
           </main>
-        {/* </ClientProvider> */}
+        </ClientProvider>
     
     
       </body>

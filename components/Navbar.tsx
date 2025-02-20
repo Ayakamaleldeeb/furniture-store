@@ -55,9 +55,8 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
   return (
-    <nav className="bg-white p-4 shadow-md flex justify-between items-center">
+    <nav className="bg-white p-4 shadow-md flex justify-between ">
       <Link href="/" className="text-black">
  
         
@@ -81,8 +80,9 @@ const Navbar = () => {
           </svg>
         </button>
       </div>
-<div className={`flex justify-between w-full ${isOpen ? 'block' : 'hidden'}`}>
+<div className={`flex  w-full ${isOpen ? 'block' : ""}`}>
 
+{/* <div className='flex w-full justify-between'> */}
 
       <ul className="flex space-x-16 md:flex ">
         <li><Link href="/" className="text-black opacity-50">HOME</Link></li>
@@ -90,16 +90,17 @@ const Navbar = () => {
         <li><Link href="/contact" className="text-black opacity-50">CATEGORIES</Link></li>
         <li><Link href="/login" className="text-black opacity-50">OFFERS</Link></li>
         <li><Link href="/login" className="text-black opacity-50">CONTACT</Link></li>
-
-
       </ul>
 
-      <div className="flex justify-between w-[110px]">
+      <div className="flex  w-[110px]">
         <Link href="#" className='text-black'>LOGIN</Link>
         <div className='w-[3px] h-8 bg-black'></div>
         <Link href="#" className='text-black'>SIGN UP</Link>
       </div>
-      </div>
+</div>
+
+
+      {/* </div> */}
 
     </nav>
   );
