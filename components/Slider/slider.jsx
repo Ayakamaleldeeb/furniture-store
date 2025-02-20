@@ -161,12 +161,12 @@ export default function Slider() {
           {slides.map((slide, index) => (
             <SwiperSlide key={slide.id}>
               <div 
-                className={`relative flex flex-col items-center justify-center h-full transition-transform duration-500 ${activeCard === index ? 'scale-110 md:scale-125 border-2 border-white z-20' : 'scale-75 md:scale-90'}`}
+                className={`relative flex flex-col items-center justify-center transition-transform duration-500 ${activeCard === index ? ' border-4 border-white z-20' : ''}`}
               >
-                <img
+                <img 
                   src={slide.image}
                   alt={`Slide ${slide.id}`}
-                  className="w-60 h-full object-cover"
+                  className={`object-cover ${activeCard===index?'w-full h-full' :'w-60 h-60 m-12'}`}
                 />
                 {activeCard === index && (
                   <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-500">
