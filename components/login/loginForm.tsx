@@ -1,58 +1,42 @@
  import React from 'react'
  import { useForm } from "react-hook-form";
-import { useState } from "react";
-import useGlobalMutation from "@/helpers/useGlobalMutation";
+// import { useState } from "react";
+// import useGlobalMutation from "@/helpers/useGlobalMutation";
+import usePostLogin from '@/use-apis/usePostLogin';
+import toast from 'react-hot-toast';
 const LoginForm=()=> {
     const {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm();
-      const [errorMessage, setErrorMessage] = useState("");
-    
-      const { mutate, data: xdata } = useGlobalMutation("/api/Account/login");
-      const onSubmit = async (data) => {
-        console.log(data);
-        mutate({
-          requestBody: {
+      } = useForm<{ email: string; password: string }>();
+    //   const [errorMessage, setErrorMessage] = useState("");    
+      const {mutate , data }=usePostLogin({
+        onSuccess: (data) => {
+            toast.success('Login success')
+            localStorage.setItem('token', data.token);
+            window.location.href = '/';
+        },
+        onError: (error) => {
+   
+        toast.error(error.message)
+        //   setErrorMessage(error.message);
+        },
+      });
+      const onSubmit = async (data:{email:string,password:string}) => {
+        // console.log(data);
+        mutate({      
             email: data.email,
             password: data.password,
-          }
-        //   ,{
-        //     onError(error, variables, context) {
-        //         console.log(error);
-        //         setErrorMessage(error.message);
-        //     },
-        //   }
-          });
-        console.log(xdata);
-    
-        // setErrorMessage('');
-    
-        // const response = await fetch('../api/login', {
-        //   method: 'POST',
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify(data),
-        // });
-    
-        // if (response.ok) {
-        //   const result = await response.json();
-        //   localStorage.setItem('token', result.token); // Store token for future requests
-        //   // Redirect to a protected page or dashboard
-        //   window.location.href = '/dashboard'; // Change this to your desired route
-        // } else {
-        //   const errorData = await response.json();
-        //   setErrorMessage(errorData.message);
-        // }
-      };
+        });
+    };
+    console.log(data);
    return (
     <>
     
     <div className="max-w-[400px] mx-auto mt-12 text-center">
       <h2>Login</h2>
-      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+      {/* {errorMessage && <p className="text-red-500">{errorMessage}</p>} */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <input

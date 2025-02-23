@@ -51,7 +51,7 @@ const Navbar = () => {
       <div className="hidden md:flex items-center space-x-4">
         <Link href="/login" className="text-black">LOGIN</Link>
         <div className="w-[3px] h-8 bg-black"></div>
-        <Link href="#" className="text-black">SIGN UP</Link>
+        <Link href="/register" className="text-black">SIGN UP</Link>
       </div>
 
       <div className="md:hidden">

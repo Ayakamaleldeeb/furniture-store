@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-
     "generate-types": "node generate-types"
   },
   "dependencies": {
@@ -25,6 +24,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.2",
+    "react-hot-toast": "^2.5.2",
     "react-query": "^3.39.3",
     "swiper": "^11.2.4",
     "tailwind-merge": "^2.5.5",

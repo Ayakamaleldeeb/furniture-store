@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import dynamic from 'next/dynamic';
+
 import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import ClientProvider from "../components/ClientProvider";
@@ -14,6 +16,7 @@ export default function RootLayout({
 }: {
   children: ReactNode;
 }) {
+  const Toaster= dynamic(() => import('react-hot-toast').then((toaster)=>toaster.Toaster))
   return (
     <html lang="en">
       
@@ -24,8 +27,7 @@ export default function RootLayout({
             {children}
           </main>
         </ClientProvider>
-    
-    
+<Toaster position='top-center'/>
       </body>
     </html>
   );
