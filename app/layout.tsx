@@ -5,6 +5,7 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import ClientProvider from "../components/ClientProvider";
 import { ReactNode } from 'react';
+import Footer from "@/components/footer/footer";
 
 export const metadata: Metadata = {
   title: "Furniture Shop",
@@ -21,13 +22,14 @@ export default function RootLayout({
     <html lang="en">
       
       <body className="font-sans bg-gray-100">
-        <Navbar />
         <ClientProvider>
+<Toaster position='top-center'/>
+        <Navbar />
           <main className="">
             {children}
           </main>
+        <Footer/>
         </ClientProvider>
-<Toaster position='top-center'/>
       </body>
     </html>
   );

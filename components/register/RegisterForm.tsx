@@ -1,37 +1,60 @@
-"use client"
-import React from 'react'
-import { useForm } from "react-hook-form";
-import usePostRegister from '@/use-apis/account/usePostRegister';
+ "use client"
+// import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  // DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+ import React from 'react'
+ import { useForm } from "react-hook-form";
+// import { useState } from "react";
+// import useGlobalMutation from "@/helpers/useGlobalMutation";
 import toast from 'react-hot-toast';
-
-const RegisterForm = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<{ email: string; userName: string; password: string; confirmPassword: string; displayName: string; phoneNumber: string }>();
-
-  const { mutate }= usePostRegister({
-    onSuccess: (data) => {
-      toast.success('Login success')
-      localStorage.setItem('token', data.token);
-      window.location.href = '/';
-    },
-    onError: (error) => {
-      toast.error(error.response.data.errors)
-    },
-  });
-
-  const onSubmit = (formData: { email: string; userName: string; password: string; displayName: string; phoneNumber: string }) => {
-    mutate(formData);
-  };
-
-  const password = watch('password');
-
+import Link from "next/link";
+import usePostRegister from '@/use-apis/account/usePostRegister';
+const RegisterForm=()=> {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+      } = useForm<{ email: string; userName: string; password: string; confirmPassword: string; displayName: string; phoneNumber: string }>();
+    
+      const { mutate }= usePostRegister({
+        onSuccess: (data) => {
+          toast.success('Login success')
+          localStorage.setItem('token', data.token);
+          window.location.href = '/';
+        },
+        onError: (error) => {
+          toast.error(error.response.data.errors)
+        },
+      });
+    
+      const onSubmit = (formData: { email: string; userName: string; password: string; displayName: string; phoneNumber: string }) => {
+        mutate(formData);
+      };
+    
+      const password = watch('password');
+    
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto p-4 bg-white shadow-md rounded">
-      <div className="mb-4">
+    <Dialog >
+      <DialogTrigger asChild>
+      <Link href="#" className="text-black">SIGN UP</Link>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px] bg-white">
+        <DialogHeader>
+          <DialogTitle>Registration</DialogTitle>
+          {/* <DialogDescription>
+            Make changes to your profile here. Click save when  done.
+          </DialogDescription> */}
+        </DialogHeader>
+           <form onSubmit={handleSubmit(onSubmit)} >
+           <div className="mb-4">
         <label className="block text-gray-700">Email</label>
         <input type="email" {...register('email', { required: 'Email is required' })} className="w-full px-3 py-2 border rounded" />
         {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
@@ -70,9 +93,25 @@ const RegisterForm = () => {
         <input type="tel" {...register('phoneNumber', { required: 'Phone Number is required' })} className="w-full px-3 py-2 border rounded" />
         {errors.phoneNumber && <p className="text-red-500 text-sm">{errors.phoneNumber.message}</p>}
       </div>
-      <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200">Submit</button>
-    </form>
-  );
-};
-
-export default RegisterForm;
+        {/* <div className="flex gap-4">
+          <button
+            type="submit"
+            className="p-2.5 bg-blue-600 text-white border-none cursor-pointer"
+          >
+            Login
+          </button>
+        </div> */}
+        <DialogFooter>
+        <button
+            type="submit"
+            className="p-2.5 bg-black hover:bg-slate-700 text-white cursor-pointer  w-full rounded-lg"
+          >
+            Login
+          </button>
+        </DialogFooter>
+      </form>
+      </DialogContent>
+    </Dialog>
+  )
+}
+ export default RegisterForm

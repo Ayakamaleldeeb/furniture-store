@@ -15,18 +15,23 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
-
+import LoginForm from './login/loginForm';
+import RegisterForm from './register/RegisterForm';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  const [activeLink, setActiveLink] = useState('/');
 
+  const handleLinkClick = (path: string) => {
+    setActiveLink(path);
+  };
   return (
     <nav className="bg-white p-4 shadow-md flex items-center justify-between">
       <div className="flex items-center">
-        <Link href="/">
+        <Link onClick={() => handleLinkClick('/') } href="/">
              <svg width="90" height="40" viewBox="0 0 118 61" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M8.79261 38.0909H3.52273V19.0852C3.52273 17.0019 4.01515 15.1695 5 13.5881C5.97538 12.0066 7.34848 10.7708 9.11932 9.88068C10.8902 9 12.9593 8.55966 15.3267 8.55966C17.7036 8.55966 19.7775 9 21.5483 9.88068C23.3191 10.7708 24.6922 12.0066 25.6676 13.5881C26.643 15.1695 27.1307 17.0019 27.1307 19.0852V38.0909H21.8608V19.5256C21.8608 18.3134 21.5956 17.2339 21.0653 16.2869C20.5256 15.34 19.768 14.5966 18.7926 14.0568C17.8172 13.5265 16.6619 13.2614 15.3267 13.2614C13.9915 13.2614 12.8362 13.5265 11.8608 14.0568C10.8759 14.5966 10.1184 15.34 9.58807 16.2869C9.05776 17.2339 8.79261 18.3134 8.79261 19.5256V38.0909Z" fill="black"/>
   <ellipse cx="15.0192" cy="24.0227" rx="4.98927" ry="4.98647" transform="rotate(0.417774 15.0192 24.0227)" fill="black"/>
@@ -41,17 +46,23 @@ const Navbar = () => {
       </div>
 
       <div className="hidden md:flex justify-center flex-1 space-x-16">
-        <Link href="/" className="text-black opacity-50">HOME</Link>
-        <Link href="/about" className="text-black opacity-50">ABOUT</Link>
-        <Link href="/categories" className="text-black opacity-50">CATEGORIES</Link>
-        <Link href="/offers" className="text-black opacity-50">OFFERS</Link>
-        <Link href="/contact" className="text-black opacity-50">CONTACT</Link>
+        <Link  onClick={() => handleLinkClick('/')}
+            className={`text-black opacity-50 ${activeLink === '/' ? 'font-bold opacity-100' : ''}`} href="/" >HOME</Link>
+        <Link href="/about"onClick={() => handleLinkClick('/about')}
+            className={`text-black opacity-50 ${activeLink === '/about' ? 'font-bold opacity-100' : ''}`}>ABOUT</Link>
+        <Link href="/categories"onClick={() => handleLinkClick('/categories')}
+            className={`text-black opacity-50 ${activeLink === '/categories' ? 'font-bold opacity-100' : ''}`}>CATEGORIES</Link>
+        <Link href="/offers"onClick={() => handleLinkClick('/offers')}
+            className={`text-black opacity-50 ${activeLink === '/offers' ? 'font-bold opacity-100' : ''}`}>OFFERS</Link>
+        <Link href="/contact"onClick={() => handleLinkClick('/contact')}
+            className={`text-black opacity-50 ${activeLink === '/contact' ? 'font-bold opacity-100' : ''}`}>CONTACT</Link>
       </div>
 
       <div className="hidden md:flex items-center space-x-4">
-        <Link href="/login" className="text-black">LOGIN</Link>
+        {/* <Link href="/login" className="text-black">LOGIN</Link> */}
+        <LoginForm/>
         <div className="w-[3px] h-8 bg-black"></div>
-        <Link href="/register" className="text-black">SIGN UP</Link>
+        <RegisterForm/>
       </div>
 
       <div className="md:hidden">

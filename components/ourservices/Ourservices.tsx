@@ -2,7 +2,7 @@
 // import React, { useRef, useState } from 'react';
 import 'swiper/swiper-bundle.css';
 // import  { Autoplay, EffectCoverflow } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 const Ourservices = () => {
   
@@ -34,7 +34,7 @@ const Ourservices = () => {
     </div>
 
 
-    <Swiper
+    {/* <Swiper
       effect={'coverflow'}
       grabCursor={true}
       centeredSlides={true}
@@ -98,7 +98,7 @@ const Ourservices = () => {
           <img src="/images/room1.jpg" alt="slide 5" />
         </div>
       </SwiperSlide>
-    </Swiper> 
+    </Swiper>  */}
 
     </>
 
