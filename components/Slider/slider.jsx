@@ -30,7 +30,7 @@ export default function Slider() {
   return (
     <div className="relative h-screen">
       <div
-        className="absolute inset-0 bg-cover bg-center transition-all duration-500 blur-sm"
+        className="absolute inset-0 bg-cover bg-center transition-all duration-500"
         style={{ backgroundImage: `url(${slides[backgroundImage].image})` }}
       />
       <div className="relative z-10 flex flex-col items-center justify-center h-full">
