@@ -70,9 +70,9 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
 .center {
   padding-top: 0; /* Adjust this value as needed */
-    
 }
 
 @layer base {
