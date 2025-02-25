@@ -6,6 +6,7 @@ export function ProductCard({ product, hasOffer }: any) {
       className={`relative   ${
         hasOffer ? "border-red-600 border-2 rounded-2xl shadow-sm" : ""
       }   bg-white text-gray-900  overflow-hidden transition-transform duration-300 hover:shadow-lg hover:scale-105 hover:rounded-xl`}
+      onClick={() => (window.location.href = `/furniture/${product.id}`)}
     >
       {hasOffer && (
         <div className="absolute top-0 left-0 bg-red-600 text-white py-1 px-10 transform -rotate-45 translate-x-[-32%] translate-y-[10%] z-10 text-lg font-bold">
