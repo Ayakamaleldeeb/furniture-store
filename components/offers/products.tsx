@@ -39,6 +39,7 @@ export function ProductsGrid() {
     {
       pageIndex: currentPage,
       pageSize: ITEMS_PER_PAGE,
+      
     },
     {
       onSuccess: (data) => {

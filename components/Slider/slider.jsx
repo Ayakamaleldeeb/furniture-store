@@ -214,19 +214,19 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    title: "KITCHIN",
+    title: "KITCHEN",
     image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&q=80&w=2000",
-    description: "DISCOVERING THE BEST FURNITURE TO YOUR KITCHEN"
+    description: "DISCOVERING THE BEST FURNITURE TO YOUR.."
   },
   {
     title: "ROOM",
     image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=2000",
-    description: "DISCOVERING THE BEST FURNITURE TO YOUR BEDROOM"
+    description: "DISCOVERING THE BEST FURNITURE TO YOUR.."
   },
   {
     title: "LIVING",
     image: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80&w=2000",
-    description: "DISCOVERING THE BEST FURNITURE TO YOUR LIVING ROOM"
+    description: "DISCOVERING THE BEST FURNITURE TO YOUR.."
   }
 ];
 

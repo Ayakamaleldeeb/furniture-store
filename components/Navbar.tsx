@@ -42,7 +42,7 @@ const Navbar = () => {
     window.location.href = "/";
   };
   return (
-    <nav className="bg-white p-4 shadow-md flex items-center justify-between">
+    <nav className="bg-white p-4 shadow-md flex items-center justify-between ">  
       <div className="flex items-center">
         <Link onClick={() => handleLinkClick("/")} href="/">
           <svg
