@@ -7,18 +7,18 @@ import useGetFurniture from '@/use-apis/furniture/useGetFurniture';
 import { useForm } from 'react-hook-form';
 //  import { useRouter } from 'next/router';
  
- interface Product {
-   id: string;
-   name: string | null;
-   pictureUrl: string | null;
-   price: number;
- }
+//  interface Product {
+//    id: string;
+//    name: string | null;
+//    pictureUrl: string | null;
+//    price: number;
+//  }
  
- interface SearchNavProps {
-   onSearch: (query: string) => void;
-   products: Product[];
-   isLoading: boolean;
- }
+//  interface SearchNavProps {
+//    onSearch: (query: string) => void;
+//    products: Product[];
+//    isLoading: boolean;
+//  }
  
  export default function SearchNav() {
    const [isOpen, setIsOpen] = useState(false);

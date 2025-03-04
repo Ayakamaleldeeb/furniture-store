@@ -3,7 +3,9 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Axios from "@/helpers/Axios";
 import { motion } from "framer-motion";
-import { Package2, Tag, Battery as Category, Building2 } from "lucide-react";
+// import { Package2, Tag, Battery as Category, Building2 } from "lucide-react";
+import { Package2,  Battery as Category, Building2 } from "lucide-react";
+
 // import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -31,7 +33,7 @@ const FurnitureItem = () => {
 
     fetchFurniture();
   }, [id]);
-  const x= "https://web-api.ikea.com/dimma/assets/1.2/10572824/LPT_S01_NV01/rqp3/glb_draco/6fb60eab6ae8161613d3360fe0c7ca97-10572824_LPT_S01_NV01_RQP3_4.0.glb"
+  // const x= "https://web-api.ikea.com/dimma/assets/1.2/10572824/LPT_S01_NV01/rqp3/glb_draco/6fb60eab6ae8161613d3360fe0c7ca97-10572824_LPT_S01_NV01_RQP3_4.0.glb"
   //   useEffect(() => {
   //     if (!product) return;
   //   if (product.furnitureModel) {
