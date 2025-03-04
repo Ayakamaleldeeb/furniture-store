@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import SearchNav from "./searchNav";
 // import { useRouter } from "next/router";
 
 const Navbar = () => {
@@ -41,8 +42,13 @@ const Navbar = () => {
     setIsAuthenticated(false);
     window.location.href = "/";
   };
+  
+  
+
+
+ 
   return (
-    <nav className="bg-white p-4 shadow-md flex items-center justify-between">
+    <nav className="bg-white p-4 shadow-md flex items-center justify-between z-50">
       <div className="flex items-center">
         <Link onClick={() => handleLinkClick("/")} href="/">
           <svg
@@ -98,6 +104,16 @@ const Navbar = () => {
             />
           </svg>
         </Link>
+        
+
+       
+        <div className="flex-1 max-w-xl">
+              <SearchNav
+                
+              />
+            </div>
+
+        
       </div>
 
       <div className="hidden md:flex justify-center flex-1 space-x-16">
@@ -146,8 +162,8 @@ const Navbar = () => {
         >
           CONTACT
         </Link>
+      
       </div>
-
       {!userName && !isAuthenticated ? (
         <div className="hidden md:flex items-center space-x-4">
           {/* <Link href="/login" className="text-black">LOGIN</Link> */}
