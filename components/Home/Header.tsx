@@ -5,6 +5,7 @@ import Ourservices from "@/components/ourservices/Ourservices";
 import { Button } from "../ui/button";
 import { ProductCard } from "../ui/itemCard";
 import useGetFurniture from "@/use-apis/furniture/useGetFurniture";
+import PromoCards from "../cards/cards";
 const Header = () => {
   const { data: products } = useGetFurniture(
     {
@@ -68,7 +69,11 @@ const Header = () => {
                 See More
               </Button>
             </div>
+            
           </div>
+
+      
+          <PromoCards/>
         </>
       )}
     </>
