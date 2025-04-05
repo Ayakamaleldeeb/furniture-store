@@ -1,10 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Slider from "@/components/Slider/slider";
 import Ourservices from "@/components/ourservices/Ourservices";
 import { Button } from "../ui/button";
 import { ProductCard } from "../ui/itemCard";
 import useGetFurniture from "@/use-apis/furniture/useGetFurniture";
+import { CartSheet } from "../cart/cart-sheet";
 const Header = () => {
   const { data: products } = useGetFurniture(
     {
@@ -12,17 +13,19 @@ const Header = () => {
     },
     {
       onSuccess: (data) => {
-        console.log("🚀", data);
+        // console.log("🚀", data);
       },
       onError(err) {
         console.log("🚀", err);
       },
     }
   );
+ 
   return (
     <>
       <Slider />
       <Ourservices />
+      
       {!!products && (
         <>
           <div className="space-y-8 px-56 mb-44 ">

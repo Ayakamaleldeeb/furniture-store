@@ -11,12 +11,44 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Group } from "three";
+import { Minus, Plus, X } from 'lucide-react';
+import usePostAddCart from "@/use-apis/cart/usePostAddCart";
+import toast from "react-hot-toast";
 const FurnitureItem = () => {
   const { id } = useParams();
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [model, setModel] = useState<Group | null>(null);
   const [modelError, setModelError] = useState<string | null>(null);
+  const [count, setCount] = useState(1);
+
+  const handleIncrement = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  const handleDecrement = () => {
+    setCount((prevCount) => (prevCount > 0 ? prevCount - 1 : 0));
+  };
+  const {mutate  }=usePostAddCart()
+  const onSubmit = () => {
+    // console.log("count", count);
+    if (count === 0) {
+      toast.error("Please select a quantity");
+      return;
+    }
+    mutate({
+      furnitureId: id,
+      quantity: count,
+    
+    },{
+      onSuccess: () => {
+        toast.success("Item added to cart");
+      }
+    })
+    // Add your logic to add the item to the cart here
+
+  };
+  // console.log(data)
   useEffect(() => {
     if (!id) return;
 
@@ -161,15 +193,30 @@ const FurnitureItem = () => {
                 {product?.description || "No description available"}
               </p>
             </div>
-
+            <div className="flex items-center space-x-2 mt-2">
+      <motion.button
+        className="h-8 w-8 flex items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300"
+        onClick={handleDecrement}
+      >
+        <Minus className="h-4 w-4" />
+      </motion.button>
+      <span className="text-lg font-semibold">{count}</span>
+      <motion.button
+        className="h-8 w-8 flex items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300"
+        onClick={handleIncrement}
+      >
+        <Plus className="h-4 w-4" />
+      </motion.button>
+    </div>
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full md:w-auto px-8 py-3 bg-black text-white rounded-lg font-medium 
-                       hover:opacity-80 transition-colors"
+              onClick={onSubmit}
+              className=" md:w-auto px-8 py-3 bg-black text-white rounded-lg font-medium hover:opacity-80 transition-colors"
             >
               Add to Cart
             </motion.button>
+            
           </motion.div>
         </div>
       </motion.div>
@@ -177,5 +224,4 @@ const FurnitureItem = () => {
     ))
   );
 };
-
 export default FurnitureItem;

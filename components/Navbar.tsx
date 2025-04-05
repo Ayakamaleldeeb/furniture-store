@@ -14,11 +14,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import SearchNav from "./searchNav";
+import { CartSheet } from "./cart/cart-sheet";
 // import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -202,14 +203,14 @@ const Navbar = () => {
               My Account
             </DropdownMenuLabel>
             <DropdownMenuSeparator className="bg-gray-200" />
+            <DropdownMenuItem onClick={() => setIsCartOpen(true)} className="px-4 py-2 hover:bg-gray-100">
+              Cart
+            </DropdownMenuItem>
             <DropdownMenuItem disabled className="px-4 py-2 hover:bg-gray-100">
               Profile
             </DropdownMenuItem>
             <DropdownMenuItem disabled className="px-4 py-2 hover:bg-gray-100">
               Billing
-            </DropdownMenuItem>
-            <DropdownMenuItem disabled className="px-4 py-2 hover:bg-gray-100">
-              Subscription
             </DropdownMenuItem>
             <DropdownMenuSeparator className="bg-gray-200" />
             <DropdownMenuItem
@@ -269,6 +270,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
+      <CartSheet open={isCartOpen} onOpenChange={setIsCartOpen} />
     </nav>
   );
 };
