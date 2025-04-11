@@ -1,5 +1,3 @@
-
-
 // "use client";
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import 'swiper/css';
@@ -77,10 +75,10 @@
 //         >
 //           {slides.map((slide, index) => (
 //             <SwiperSlide key={slide.id}>
-//               <div 
+//               <div
 //                 className={`relative flex flex-col items-center justify-center transition-transform duration-500 ${activeCard === index ? ' border-4 border-white z-20' : ''}`}
 //               >
-//                 <img 
+//                 <img
 //                   src={slide.image}
 //                   alt={`Slide ${slide.id}`}
 //                   className={`object-cover ${activeCard===index?'w-full h-full' :'w-60 h-60 m-12'}`}
@@ -179,10 +177,10 @@
 // //         >
 // //           {slides.map((slide, index) => (
 // //             <SwiperSlide key={slide.id}>
-// //               <div 
+// //               <div
 // //                 className={`relative flex flex-col items-center justify-center transition-transform duration-500 ${activeCard === index ? ' border-4 border-white z-20' : ''}`}
 // //               >
-// //                 <img 
+// //                 <img
 // //                   src={slide.image}
 // //                   alt={`Slide ${slide.id}`}
 // //                   className={`object-cover ${activeCard===index?'w-full h-full' :'w-60 h-60 m-12'}`}
@@ -203,7 +201,6 @@
 // //   );
 // // }
 
-
 // /////////////////////////////////////////////////////////////
 
 "use client";
@@ -214,20 +211,25 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    title: "KITCHEN",
-    image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&q=80&w=2000",
-    description: "DISCOVERING THE BEST FURNITURE TO YOUR.."
+
+    title: "KITCHIN",
+    image:
+      "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&q=80&w=2000",
+    description: "DISCOVERING THE BEST FURNITURE TO YOUR KITCHEN",
   },
   {
     title: "ROOM",
-    image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=2000",
-    description: "DISCOVERING THE BEST FURNITURE TO YOUR.."
+    image:
+      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=2000",
+    description: "DISCOVERING THE BEST FURNITURE TO YOUR BEDROOM",
   },
   {
     title: "LIVING",
-    image: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80&w=2000",
-    description: "DISCOVERING THE BEST FURNITURE TO YOUR.."
-  }
+    image:
+      "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80&w=2000",
+    description: "DISCOVERING THE BEST FURNITURE TO YOUR LIVING ROOM",
+  },
+
 ];
 
 const AUTOPLAY_INTERVAL = 5000;
@@ -239,7 +241,7 @@ export default function Slider() {
 
   const autoplay = useCallback(() => {
     if (!emblaApi || !isAutoPlaying) return;
-    
+
     const timeoutId = setTimeout(() => {
       if (emblaApi.canScrollNext()) {
         emblaApi.scrollNext();
@@ -278,12 +280,12 @@ export default function Slider() {
   };
 
   return (
-    <div 
+    <div
       className="relative min-h-screen transition-all duration-700 ease-in-out"
       style={{
         backgroundImage: `url(${slides[selectedIndex].image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
@@ -291,22 +293,18 @@ export default function Slider() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
       <div className="relative h-screen flex items-center justify-center">
-     
         <div className="max-w-6xl w-full mx-auto px-4">
           <div className="relative">
             {/* Main Carousel */}
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {slides.map((slide, index) => (
-                  <div
-                    key={index}
-                    className="relative flex-[0_0_100%] min-w-0"
-                  >
+                  <div key={index} className="relative flex-[0_0_100%] min-w-0">
                     <div className="flex flex-col items-center justify-center p-8 text-center">
                       <h2 className="text-4xl font-bold mb-8 text-white tracking-wider">
                         {slide.description}
                       </h2>
-                      
+
                       {/* Main Image Container */}
                       <div className="relative w-full max-w-2xl aspect-[16/9] overflow-hidden rounded-2xl">
                         <img
@@ -342,8 +340,8 @@ export default function Slider() {
                   <button
                     key={index}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === selectedIndex 
-                        ? "bg-white w-8" 
+                      index === selectedIndex
+                        ? "bg-white w-8"
                         : "bg-white/50 hover:bg-white/75"
                     }`}
                     onClick={() => {

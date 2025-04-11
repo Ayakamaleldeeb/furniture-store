@@ -13,11 +13,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import SearchNav from "./searchNav";
+import { CartSheet } from "./cart/cart-sheet";
 // import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -41,8 +43,16 @@ const Navbar = () => {
     setIsAuthenticated(false);
     window.location.href = "/";
   };
+  
+  
+
+
+ 
   return (
-    <nav className="bg-white p-4 shadow-md flex items-center justify-between ">  
+
+
+    <nav className="bg-white p-4 shadow-md flex items-center justify-between z-50">
+
       <div className="flex items-center">
         <Link onClick={() => handleLinkClick("/")} href="/">
           <svg
@@ -98,6 +108,16 @@ const Navbar = () => {
             />
           </svg>
         </Link>
+        
+
+       
+        <div className="flex-1 max-w-xl">
+              <SearchNav
+                
+              />
+            </div>
+
+        
       </div>
 
       <div className="hidden md:flex justify-center flex-1 space-x-16">
@@ -146,8 +166,8 @@ const Navbar = () => {
         >
           CONTACT
         </Link>
+      
       </div>
-
       {!userName && !isAuthenticated ? (
         <div className="hidden md:flex items-center space-x-4">
           {/* <Link href="/login" className="text-black">LOGIN</Link> */}
@@ -186,14 +206,14 @@ const Navbar = () => {
               My Account
             </DropdownMenuLabel>
             <DropdownMenuSeparator className="bg-gray-200" />
+            <DropdownMenuItem onClick={() => setIsCartOpen(true)} className="px-4 py-2 hover:bg-gray-100">
+              Cart
+            </DropdownMenuItem>
             <DropdownMenuItem disabled className="px-4 py-2 hover:bg-gray-100">
               Profile
             </DropdownMenuItem>
             <DropdownMenuItem disabled className="px-4 py-2 hover:bg-gray-100">
               Billing
-            </DropdownMenuItem>
-            <DropdownMenuItem disabled className="px-4 py-2 hover:bg-gray-100">
-              Subscription
             </DropdownMenuItem>
             <DropdownMenuSeparator className="bg-gray-200" />
             <DropdownMenuItem
@@ -253,6 +273,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
+      <CartSheet open={isCartOpen} onOpenChange={setIsCartOpen} />
     </nav>
   );
 };

@@ -1,29 +1,35 @@
 "use client";
-import React from "react";
+// import React, { useState } from "react";
 import Slider from "@/components/Slider/slider";
 import Ourservices from "@/components/ourservices/Ourservices";
 import { Button } from "../ui/button";
 import { ProductCard } from "../ui/itemCard";
 import useGetFurniture from "@/use-apis/furniture/useGetFurniture";
-import PromoCards from "../cards/cards";
+
+
+// import { CartSheet } from "../cart/cart-sheet";
+import  PromoCards from "@/components/cards/cards";
+
 const Header = () => {
   const { data: products } = useGetFurniture(
     {
       pageSize: 3,
     },
     {
-      onSuccess: (data) => {
-        console.log("🚀", data);
+      onSuccess: () => {
+        // console.log("🚀", data);
       },
       onError(err) {
         console.log("🚀", err);
       },
     }
   );
+ 
   return (
     <>
       <Slider />
       <Ourservices />
+      
       {!!products && (
         <>
           <div className="space-y-8 px-56 mb-44 ">
@@ -72,7 +78,7 @@ const Header = () => {
             
           </div>
 
-      
+
           <PromoCards/>
         </>
       )}
