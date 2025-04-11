@@ -1,18 +1,19 @@
 "use client";
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Slider from "@/components/Slider/slider";
 import Ourservices from "@/components/ourservices/Ourservices";
 import { Button } from "../ui/button";
 import { ProductCard } from "../ui/itemCard";
 import useGetFurniture from "@/use-apis/furniture/useGetFurniture";
-import { CartSheet } from "../cart/cart-sheet";
+// import { CartSheet } from "../cart/cart-sheet";
+import  PromoCards from "@/components/cards/cards";
 const Header = () => {
   const { data: products } = useGetFurniture(
     {
       pageSize: 3,
     },
     {
-      onSuccess: (data) => {
+      onSuccess: () => {
         // console.log("🚀", data);
       },
       onError(err) {
@@ -72,6 +73,8 @@ const Header = () => {
               </Button>
             </div>
           </div>
+
+          <PromoCards/>
         </>
       )}
     </>
