@@ -1,7 +1,7 @@
 import { useMutation, UseMutationOptions, MutateFunction } from "react-query";
 import Axios from "@/helpers/Axios";
 type Data = {
-      furnitureId: string;
+      furnitureId: string | string[] | undefined;
       quantity: number;
 };
 

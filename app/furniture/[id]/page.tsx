@@ -11,7 +11,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Group } from "three";
-import { Minus, Plus, X } from 'lucide-react';
+import { Minus, Plus } from 'lucide-react';
 import usePostAddCart from "@/use-apis/cart/usePostAddCart";
 import toast from "react-hot-toast";
 const FurnitureItem = () => {

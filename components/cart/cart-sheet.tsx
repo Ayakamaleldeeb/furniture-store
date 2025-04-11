@@ -1,7 +1,7 @@
 'use client';
 
 import { Minus, Plus, X } from 'lucide-react';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -24,7 +24,7 @@ const {data,isLoading}=useGetCart({
       console.log(data)
   },
   refetchOnMount: false,
-  // enabled:false,
+  enabled:open,
   refetchOnWindowFocus: false,
 });
 return (
@@ -40,18 +40,18 @@ return (
           <p className="text-center text-muted-foreground">Your cart is empty</p>
         ) : (
           <div className="space-y-4">
-            {data?.items.map((item) => (
+            {data?.items.map((item:any) => (
               <div
                 key={item.furnitureId}
                 className="flex items-center space-x-4 border-b pb-4"
               >
                 <div className="relative h-20 w-20 flex-shrink-0">
-                  <Image
+                  {/* <Image
                     src={item.pictureUrl || ''}
                     alt={item.name || 'Product Image'}
                     fill
                     className="object-cover rounded"
-                  />
+                  /> */}
                 </div>
                 <div className="flex-grow">
                   <h3 className="font-medium">{item.name}</h3>
