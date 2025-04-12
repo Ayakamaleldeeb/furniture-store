@@ -210,7 +210,6 @@
 
 import { useEffect, useState, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-// import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
@@ -268,19 +267,6 @@ export default function Slider() {
     return autoplay();
   }, [autoplay, selectedIndex]);
 
-  // const scrollPrev = () => {
-  //   if (emblaApi) {
-  //     setIsAutoPlaying(false);
-  //     emblaApi.scrollPrev();
-  //   }
-  // };
-
-  // const scrollNext = () => {
-  //   if (emblaApi) {
-  //     setIsAutoPlaying(false);
-  //     emblaApi.scrollNext();
-  //   }
-  // };
 
   return (
     <div

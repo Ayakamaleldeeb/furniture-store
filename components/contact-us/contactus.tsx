@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -9,8 +9,8 @@ export default function ContactSection() {
     email: "",
     message: "",
   });
-  const [formStatus, setFormStatus] = useState(""); // For displaying success or error messages
-  const router = useRouter();
+  // const [formStatus, setFormStatus] = useState(""); // For displaying success or error messages
+  // const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -20,15 +20,15 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    try {
-      setFormStatus("Submitting...");
-      setTimeout(() => {
-        setFormStatus("Thank you! Your message has been sent.");
-        setFormData({ name: "", email: "", message: "" });
-      }, 2000);
-    } catch (error) {
-      setFormStatus("Something went wrong. Please try again later.");
-    }
+    // try {
+    //   setFormStatus("Submitting...");
+    //   setTimeout(() => {
+    //     setFormStatus("Thank you! Your message has been sent.");
+    //     setFormData({ name: "", email: "", message: "" });
+    //   }, 2000);
+    // } catch (error) {
+    //   setFormStatus("Something went wrong. Please try again later.");
+    // }
   };
 
   return (
@@ -94,11 +94,11 @@ export default function ContactSection() {
               Send Message
             </button>
           </form>
-          {formStatus && (
+          {/* {formStatus && (
             <div className="mt-4 text-center text-sm text-green-600">
               {formStatus}
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </section>
