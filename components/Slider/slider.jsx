@@ -203,11 +203,14 @@
 
 // /////////////////////////////////////////////////////////////
 
+
+
+
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+// import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
@@ -215,19 +218,19 @@ const slides = [
     title: "KITCHIN",
     image:
       "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&q=80&w=2000",
-    description: "DISCOVERING THE BEST FURNITURE TO YOUR KITCHEN",
+    description: "DISCOVERING THE BEST FURNITURE",
   },
   {
     title: "ROOM",
     image:
       "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=2000",
-    description: "DISCOVERING THE BEST FURNITURE TO YOUR BEDROOM",
+    description: "DISCOVERING THE BEST FURNITURE",
   },
   {
     title: "LIVING",
     image:
       "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80&w=2000",
-    description: "DISCOVERING THE BEST FURNITURE TO YOUR LIVING ROOM",
+    description: "DISCOVERING THE BEST FURNITURE",
   },
 
 ];
@@ -265,19 +268,19 @@ export default function Slider() {
     return autoplay();
   }, [autoplay, selectedIndex]);
 
-  const scrollPrev = () => {
-    if (emblaApi) {
-      setIsAutoPlaying(false);
-      emblaApi.scrollPrev();
-    }
-  };
+  // const scrollPrev = () => {
+  //   if (emblaApi) {
+  //     setIsAutoPlaying(false);
+  //     emblaApi.scrollPrev();
+  //   }
+  // };
 
-  const scrollNext = () => {
-    if (emblaApi) {
-      setIsAutoPlaying(false);
-      emblaApi.scrollNext();
-    }
-  };
+  // const scrollNext = () => {
+  //   if (emblaApi) {
+  //     setIsAutoPlaying(false);
+  //     emblaApi.scrollNext();
+  //   }
+  // };
 
   return (
     <div
@@ -290,9 +293,17 @@ export default function Slider() {
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+
+ {/* Overlay */}
+ <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
       <div className="relative h-screen flex items-center justify-center">
+        {/* Fixed description */}
+        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 text-center z-10">
+          <h2 className="text-2xl font-bold mb-8 text-white tracking-wider">
+            {slides[selectedIndex].description}
+          </h2>
+        </div>
+
         <div className="max-w-6xl w-full mx-auto px-4">
           <div className="relative">
             {/* Main Carousel */}
@@ -300,41 +311,24 @@ export default function Slider() {
               <div className="flex">
                 {slides.map((slide, index) => (
                   <div key={index} className="relative flex-[0_0_100%] min-w-0">
-                    <div className="flex flex-col items-center justify-center p-8 text-center">
-                      <h2 className="text-4xl font-bold mb-8 text-white tracking-wider">
-                        {slide.description}
-                      </h2>
-
-                      {/* Main Image Container */}
-                      <div className="relative w-full max-w-2xl aspect-[16/9] overflow-hidden rounded-2xl">
-                        <img
-                          src={slide.image}
-                          alt={slide.title}
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                          <h3 className="text-6xl font-black text-white drop-shadow-lg tracking-widest">
-                            {slide.title}
-                          </h3>
-                        </div>
+                    {/* Main Image Container */}
+                    <div className="relative w-full max-w-2xl aspect-[16/9] overflow-hidden rounded-2xl mx-auto">
+                      <img
+                        src={slide.image}
+                        alt={slide.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                        <h3 className="text-6xl font-black text-white drop-shadow-lg tracking-widest">
+                          {slide.title}
+                        </h3>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Navigation Controls Container */}
             <div className="flex items-center justify-center gap-8 mt-8">
-              {/* Navigation Buttons */}
-              <button
-                onClick={scrollPrev}
-                className="bg-white/10 hover:bg-white/20 rounded-full p-3 backdrop-blur-sm transition-all duration-300"
-              >
-                <ChevronLeft className="w-6 h-6 text-white" />
-              </button>
-
-              {/* Dots Navigation */}
               <div className="flex gap-3">
                 {slides.map((_, index) => (
                   <button
@@ -352,12 +346,7 @@ export default function Slider() {
                 ))}
               </div>
 
-              <button
-                onClick={scrollNext}
-                className="bg-white/10 hover:bg-white/20 rounded-full p-3 backdrop-blur-sm transition-all duration-300"
-              >
-                <ChevronRight className="w-6 h-6 text-white" />
-              </button>
+
             </div>
           </div>
         </div>

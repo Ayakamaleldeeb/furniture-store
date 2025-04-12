@@ -5,6 +5,7 @@ import Ourservices from "@/components/ourservices/Ourservices";
 import { Button } from "../ui/button";
 import { ProductCard } from "../ui/itemCard";
 import useGetFurniture from "@/use-apis/furniture/useGetFurniture";
+import ContactSection from "@/components/contact-us/contactus";
 
 
 // import { CartSheet } from "../cart/cart-sheet";
@@ -78,8 +79,9 @@ const Header = () => {
             
           </div>
 
-
+          
           <PromoCards/>
+          <ContactSection/>
         </>
       )}
     </>
