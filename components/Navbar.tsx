@@ -16,6 +16,23 @@ import {
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import SearchNav from "./searchNav";
 import { CartSheet } from "./cart/cart-sheet";
+// import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  // navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
+import useGetCategories from "@/use-apis/category/useGetCategory";
+
+
+
+
+
+
 
 const Navbar = () => {
   // const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +41,7 @@ const Navbar = () => {
   //   setIsOpen(!isOpen);
   // };
   const [activeLink, setActiveLink] = useState("/");
-
+console.log("🚀 ~ Navbar ~ activeLink:", activeLink);
   const handleLinkClick = (path: string) => {
     setActiveLink(path);
   };
@@ -42,7 +59,14 @@ const Navbar = () => {
     setIsAuthenticated(false);
     window.location.href = "/";
   };
-
+  const {data}=useGetCategories({
+    onSuccess(data) {
+        console.log(data)
+    },
+    refetchOnMount: false,
+    // enabled:open,
+    refetchOnWindowFocus: false,
+  });
   return (
     <nav className="bg-white p-4 shadow-md flex flex-col items-center justify-center z-50">
       <div className="flex justify-between items-center w-full max-w-7xl">
@@ -172,7 +196,7 @@ const Navbar = () => {
         )}
       </div>
 
-      <div className="flex justify-center w-full mt-4">
+      {/* <div className="flex justify-center w-full mt-4">
         <div className="flex space-x-24">
           <Link
             onClick={() => handleLinkClick("/")}
@@ -182,8 +206,8 @@ const Navbar = () => {
             href="/"
           >
             HOME
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/about"
             onClick={() => handleLinkClick("/about")}
             className={`text-black opacity-50 ${
@@ -191,8 +215,8 @@ const Navbar = () => {
             }`}
           >
             ABOUT
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/categories"
             onClick={() => handleLinkClick("/categories")}
             className={`text-black opacity-50 ${
@@ -220,8 +244,96 @@ const Navbar = () => {
             CONTACT
           </Link>
         </div>
-      </div>
+      </div> */}
 
+{/* =============================================================================================== */}
+
+    <NavigationMenu  >
+      <NavigationMenuList className="flex space-x-24">
+        <NavigationMenuItem>
+        <NavigationMenuLink asChild  
+        
+        className={`text-black  ${
+              activeLink === "/" ? "font-bold opacity-100" : ""
+            }`}
+            
+            >
+            <Link  href="/"
+            onClick={() => handleLinkClick("/")}
+              >HOME</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={`text-black  ${
+            activeLink === "/about" ? "font-bold opacity-100" : ""
+          }`}>
+            <Link href="/about"
+            onClick={() => handleLinkClick("/about")}
+            >ABOUT</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger  className="text-black hover:text-black">
+            
+          <NavigationMenuLink asChild className={`text-black  ${
+            activeLink === "/categories" ? "font-bold opacity-100" : ""
+          }`}>
+          <Link href="/categories"
+          onClick={() => handleLinkClick("/categories")}
+         >CATEGORIES</Link>
+        </NavigationMenuLink>
+
+          </NavigationMenuTrigger>
+          <NavigationMenuContent className="bg-slate-50 p-4 z-[100] rounded-xl shadow-xl border">
+  <ul className="grid w-[400px] gap-4 md:w-[500px] md:grid-cols-4 lg:w-[600px]">
+    {data?.map((category: any) => (
+      <li
+        key={category.id}
+        className=""
+      >
+        <Link href={`/categories/${category.name}`}>
+        <NavigationMenuLink
+          className={`block text-center text-base font-semibold hover:text-blue-700 text-gray-700 rounded-2xl bg-white p-4 hover:bg-blue-100 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 ring-1 ring-slate-200 ${
+            activeLink === "/categories" ? "text-black" : ""
+          }`}
+          onClick={() => handleLinkClick("/categories")}
+        >
+            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug text-gray-500  transition-colors">
+              {category.name}
+            </p>
+        </NavigationMenuLink>
+          </Link>
+      </li>
+    ))}
+  </ul>
+</NavigationMenuContent>
+
+        </NavigationMenuItem>
+        
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={`text-black  ${
+              activeLink === "/offers" ? "font-bold opacity-100" : ""
+            }`}>
+            <Link href={"/offers"} onClick={() => handleLinkClick("/offers")}
+            >OFFERS</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+        
+        <NavigationMenuLink asChild className={`text-black  ${
+            activeLink === "/contact" ? "font-bold opacity-100" : ""
+          }`}>
+          <Link href="/contact"
+          onClick={() => handleLinkClick("/contact")}
+         >CONTACT</Link>
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+   
+      </NavigationMenuList>
+    </NavigationMenu>
+  
+
+{/* ===================================================================================================== */}
       {/* Hidden Mobile Cart */}
       <CartSheet open={isCartOpen} onOpenChange={setIsCartOpen} />
     </nav>

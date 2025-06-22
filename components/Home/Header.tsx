@@ -55,14 +55,15 @@ const Header = () => {
               </Button>
             </div>
           </div>
+          {products?.data.some((product) => product.hasOffer === true) && (
           <div className="space-y-8 px-56 my-44  ">
             <h2 className="text-3xl font-bold text-center mb-5">Offers</h2>
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products?.data.map((product) => (
+              {products?.data.filter((product)=>product.hasOffer === true).map((product) => (
                 <ProductCard
                   key={product.id}
                   product={product}
-                  hasOffer={true}
+                  hasOffer={product.hasOffer}
                 />
               ))}
             </div>
@@ -78,7 +79,7 @@ const Header = () => {
             </div>
             
           </div>
-
+          )}
           
           <PromoCards/>
           <ContactSection/>

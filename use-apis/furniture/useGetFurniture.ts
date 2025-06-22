@@ -12,6 +12,29 @@ interface Category {
   name: string | null;
 }
 
+interface StyleType {
+  id: string;
+  name: string | null;
+  furnitures?: Furniture[]; // Circular reference
+}
+
+interface Color {
+  id: string;
+  name: string | null;
+  hex: string | null;
+}
+
+interface Rating {
+  id: string;
+  stars: number;
+  review: string | null;
+  userId: string | null;
+  user?: any; // Circular reference
+  productId: string;
+  product?: any; // Circular reference
+  createdAt: string;
+}
+
 interface Furniture {
   id: string;
   name: string | null;
@@ -19,10 +42,20 @@ interface Furniture {
   pictureUrl: string | null;
   furnitureModel: string | null;
   price: number;
+  discountedPrice: number | null;
+  hasOffer: boolean;
+  offerStartDate: string | null;
+  offerEndDate: string | null;
+  discountPercentage: number | null;
   brandId: string;
   brand: Brand;
   categoryId: string;
   category: Category;
+  styleTypeId: string;
+  styleType: StyleType;
+  colorId: string;
+  color: Color;
+  ratings: Rating[];
 }
 
 interface FurnitureResponse {
@@ -31,7 +64,6 @@ interface FurnitureResponse {
   count: number;
   data: Furniture[];
 }
-
 interface FurnitureQueryParams {
   sort?: string;
   brandId?: string;

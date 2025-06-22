@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { useEffect, useState } from "react";
 import { ProductCard } from "@/components/ui/itemCard";
@@ -30,7 +30,7 @@ interface Furniture {
   category: Category;
 }
 
-export function ProductsGrid() {
+export function CategoriesComponent() {
   const [displayedProducts, setDisplayedProducts] = useState<Furniture[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -73,7 +73,7 @@ export function ProductsGrid() {
 
   useEffect(() => {
     if (products) {
-      const newProducts = products.data.filter((product) => product.hasOffer === true);
+      const newProducts = products.data
       if (currentPage === 1) {
         setDisplayedProducts(newProducts);
       } else {
@@ -84,21 +84,15 @@ export function ProductsGrid() {
 
   return (
     <div className="space-y-8 px-28 my-4">
-      <h2 className="text-3xl font-bold text-center">Offers</h2>
+      <h2 className="text-3xl font-bold text-center"> Products </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {displayedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-      {displayedProducts.length === 0 && (
-  <div className="flex flex-col items-center justify-center min-h-[200px] w-full">
-    <div className="bg-red-100 text-red-600 px-6 py-4 rounded-xl shadow-md text-lg font-semibold max-w-xs w-full text-center">
-      No offer available
-    </div>
-  </div>
-)}
+
       {(currentPage < totalPages) &&
-        (products?.data?.filter((product) => product.hasOffer === true).length ?? 0) > 0  && (
+         (
         <div className="flex justify-center mt-8">
           <Button
             onClick={loadMore}
