@@ -26,6 +26,7 @@ import {
   // navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import useGetCategories from "@/use-apis/category/useGetCategory";
+// import AdminDashboard from "./admin/AdminDashboard";
 
 const Navbar = () => {
   // const [isOpen, setIsOpen] = useState(false);
@@ -60,6 +61,7 @@ const Navbar = () => {
     // enabled:open,
     refetchOnWindowFocus: false,
   });
+
   return (
     <nav className="bg-white p-4 shadow-md flex flex-col items-center justify-center z-50">
       <div className="flex justify-between items-center w-full max-w-7xl">
@@ -122,7 +124,6 @@ const Navbar = () => {
             <SearchNav />
           </div>
         </div>
-
         {!userName && !isAuthenticated ? (
           <div className="hidden md:flex items-center space-x-4">
             <LoginForm />
@@ -166,6 +167,12 @@ const Navbar = () => {
                 Cart
               </DropdownMenuItem>
               <DropdownMenuItem
+                onClick={() => window.location.href = "/admin"}
+                className="px-4 py-2 hover:bg-gray-100"
+              >
+                Dashboard
+              </DropdownMenuItem>
+              <DropdownMenuItem
                 disabled
                 className="px-4 py-2 hover:bg-gray-100"
               >
@@ -189,55 +196,7 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* <div className="flex justify-center w-full mt-4">
-        <div className="flex space-x-24">
-          <Link
-            onClick={() => handleLinkClick("/")}
-            className={`text-black opacity-50 ${
-              activeLink === "/" ? "font-bold opacity-100" : ""
-            }`}
-            href="/"
-          >
-            HOME
-          </Link> */}
-      {/* <Link
-            href="/about"
-            onClick={() => handleLinkClick("/about")}
-            className={`text-black opacity-50 ${
-              activeLink === "/about" ? "font-bold opacity-100" : ""
-            }`}
-          >
-            ABOUT
-          </Link> */}
-      {/* <Link
-            href="/categories"
-            onClick={() => handleLinkClick("/categories")}
-            className={`text-black opacity-50 ${
-              activeLink === "/categories" ? "font-bold opacity-100" : ""
-            }`}
-          >
-            CATEGORIES
-          </Link>
-          <Link
-            href="/offers"
-            onClick={() => handleLinkClick("/offers")}
-            className={`text-black opacity-50 ${
-              activeLink === "/offers" ? "font-bold opacity-100" : ""
-            }`}
-          >
-            OFFERS
-          </Link>
-          <Link
-            href="/contact"
-            onClick={() => handleLinkClick("/contact")}
-            className={`text-black opacity-50 ${
-              activeLink === "/contact" ? "font-bold opacity-100" : ""
-            }`}
-          >
-            CONTACT
-          </Link>
-        </div>
-      </div> */}
+    
 
       {/* =============================================================================================== */}
 
