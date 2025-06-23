@@ -54,7 +54,7 @@ interface FurnitureQueryParams {
   pageIndex?: number;
 }
 
-export function CategoriesComponent() {
+export function SubCategoriesComponent({ categoryId }: any) {
   const [displayedProducts, setDisplayedProducts] = useState<Furniture[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -64,7 +64,7 @@ export function CategoriesComponent() {
   const [filters, setFilters] = useState<FurnitureQueryParams>({
     sort: undefined,
     brandId: undefined,
-    categoryId: undefined,
+    categoryId: categoryId,
     search: undefined,
     pageSize: ITEMS_PER_PAGE,
     pageIndex: 1,
@@ -149,8 +149,9 @@ export function CategoriesComponent() {
     <div className="space-y-8 px-4 sm:px-8 md:px-16 lg:px-28 my-4">
       <div className="flex justify-end my-5 ">
         <h2 className="text-3xl font-bold text-center m-auto flex">
-          {" "}
-          Products{" "}
+          {categories
+            .filter((e: any) => e.id === categoryId)
+            .map((cat: any) => cat.name)}
         </h2>
         <button
           onClick={() => setShowFilters((prev) => !prev)}
@@ -201,7 +202,7 @@ export function CategoriesComponent() {
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
                 disabled={brandsLoading}
               >
-                <option value={undefined}>All Brands</option>
+                <option value="">All Brands</option>
                 {brands.map((brand: any) => (
                   <option key={brand.id} value={brand.id}>
                     {brand.name}
@@ -222,12 +223,13 @@ export function CategoriesComponent() {
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
                 disabled={categoriesLoading}
               >
-                <option value={undefined}>All Categories</option>
-                {categories.map((cat: any) => (
-                  <option key={cat.id} value={cat.id}>
-                    {cat.name}
-                  </option>
-                ))}
+                {categories
+                  .filter((e: any) => e.id === categoryId)
+                  .map((cat: any) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.name}
+                    </option>
+                  ))}
               </select>
             </div>
 
@@ -242,7 +244,7 @@ export function CategoriesComponent() {
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
                 disabled={colorsLoading}
               >
-                <option value={undefined}>All Colors</option>
+                <option value="">All Colors</option>
                 {colors.map((color: any) => (
                   <option key={color.id} value={color.id}>
                     {color.name}

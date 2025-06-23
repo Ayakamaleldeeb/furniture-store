@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -33,9 +32,9 @@ const Ourservices = () => {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center bg-gray-50">
+      <div className="min-h-screen flex flex-col  items-center bg-gray-50">
         {/* Header */}
-        <div className="p-8 max-w-2xl w-full text-center flex flex-col">
+        <div className="p-8 max-w-2xl w-full  text-center flex flex-col">
           <motion.h1
             className="text-4xl font-bold text-black mb-6"
             initial={{ opacity: 0, y: -20 }}
@@ -76,13 +75,14 @@ const Ourservices = () => {
         </div>
 
         {/* Call to Action */}
-        <motion.button
+        {/* <motion.button
           className="bg-black text-white px-6 py-2 rounded-lg mt-8 hover:bg-zinc-600 transition duration-300"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => (window.location.href = "/categories")}
         >
           Shop Now
-        </motion.button>
+        </motion.button> */}
       </div>
     </>
   );
