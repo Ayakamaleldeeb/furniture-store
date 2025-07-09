@@ -18,11 +18,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   );
   return (
     <html lang="en">
-      <body className="font-sans bg-white">
+      <body className="font-sans bg-white min-h-screen flex flex-col">
         <ClientProvider>
           <Toaster position="top-center" />
           <Navbar />
-          <main className="">{children}</main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </ClientProvider>
       </body>

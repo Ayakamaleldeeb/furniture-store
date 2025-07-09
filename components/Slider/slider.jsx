@@ -284,7 +284,7 @@ export default function Slider() {
  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
       <div className="relative h-screen flex items-center justify-center">
         {/* Fixed description */}
-        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 text-center z-10">
+        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 text-center ">
           <h2 className="text-2xl font-bold mb-8 text-white tracking-wider">
             {slides[selectedIndex].description}
           </h2>
