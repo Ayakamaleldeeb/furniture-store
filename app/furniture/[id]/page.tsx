@@ -128,16 +128,16 @@ const FurnitureItem = () => {
           >
             {product?.pictureUrl ? (
               <div className="relative w-full h-full">
-                {/* <img
+                {modelError ? (
+                <img
                   src={product?.pictureUrl}
                   alt={product?.name || "Product Image"}
                   // fill
                   className="object-cover bg-slate-100 h-full rounded-xl"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   // priority
-                /> */}
-                {modelError ? (
-            <div className="text-center text-red-500">{modelError}</div>
+                />
+            // <div className="text-center text-red-500">{modelError}</div>
           ) : (
             <Canvas className="w-full h-96 rounded-xl shadow-lg">
               <ambientLight intensity={0.5} />
